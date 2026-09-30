@@ -49,13 +49,7 @@ body {
     text-decoration: none; flex-shrink: 0;
 }
 .tech-logo img { display:block; }
-.header-badge {
-    background: var(--accent);
-    color: #fff; font-size: 0.65rem; font-weight: 800;
-    padding: 3px 8px; border-radius: 3px;
-    text-transform: uppercase; letter-spacing: 0.8px;
-    white-space: nowrap;
-}
+
 .tech-nav {
     display: flex; gap: 2px; list-style: none;
     flex: 1; justify-content: center;
@@ -489,7 +483,7 @@ body {
     :root { --header-height: 56px; }
     .header-inner { padding: 0 16px; gap: 10px; }
     .tech-logo img { width:130px; height:auto; }
-    .header-badge { font-size: 0.6rem; padding: 2px 6px; }
+    
 
     .tech-nav {
         display: none; width: 100%; flex-direction: column;
@@ -544,4 +538,5 @@ body {
     .container { max-width: 100%; padding: 0; }
     .article-hero-wrap { max-width: 100%; padding: 0; }
 }
+
 
