@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
-HelloInsights — Sitemap Generator
+NextPixel — Sitemap Generator
 
 Generates a complete sitemap.xml including:
 - Homepage
@@ -81,7 +81,7 @@ def main():
     
     if '--domain' in sys.argv:
         idx = sys.argv.index('--domain')
-        domain = sys.argv[idx + 1] if idx + 1 < len(sys.argv) else 'finance.helloinsights.online'
+        domain = sys.argv[idx + 1] if idx + 1 < len(sys.argv) else 'nextpixel.site'
     if '--output' in sys.argv:
         idx = sys.argv.index('--output')
         output_path = sys.argv[idx + 1] if idx + 1 < len(sys.argv) else 'sitemap.xml'
@@ -91,11 +91,11 @@ def main():
         output_path = sys.argv[3] if len(sys.argv) > 3 else 'sitemap.xml'
         with open(site_config_path, 'r', encoding='utf-8') as f:
             config = json.load(f)
-        domain = config.get('domain', 'finance.helloinsights.online')
+        domain = config.get('domain', 'nextpixel.site')
         subcategories = config.get('subcategories')
     
     if not domain:
-        domain = 'finance.helloinsights.online'
+        domain = 'nextpixel.site'
     
     # Read index
     with open(index_path, 'r', encoding='utf-8') as f:
@@ -131,3 +131,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+

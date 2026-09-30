@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Article | HelloInsights Technology</title>
-    <meta name="description" id="metaDesc" content="Technology article from HelloInsights.">
-    <link rel="canonical" id="canonicalUrl" href="https://technology.helloinsights.online/">
+    <title id="pageTitle">Article | NextPixel Technology</title>
+    <meta name="description" id="metaDesc" content="Technology article from NextPixel.">
+    <link rel="canonical" id="canonicalUrl" href="https://nextpixel.site/">
     <!-- OG -->
     <meta property="og:type" content="article">
-    <meta property="og:title" id="ogTitle" content="Article | HelloInsights Technology">
+    <meta property="og:title" id="ogTitle" content="Article | NextPixel Technology">
     <meta property="og:description" id="ogDesc" content="">
-    <meta property="og:url" id="ogUrl" content="https://technology.helloinsights.online/">
-    <meta property="og:site_name" content="HelloInsights Technology">
+    <meta property="og:url" id="ogUrl" content="https://nextpixel.site/">
+    <meta property="og:site_name" content="NextPixel Technology">
     <meta property="og:image" id="ogImage" content="">
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -24,10 +24,10 @@
     <link rel="stylesheet" href="style.css">
     <!-- JSON-LD -->
     <script type="application/ld+json" id="jsonldArticle">
-    {"@context":"https://schema.org","@type":"Article","headline":"","datePublished":"","image":"","author":{"@type":"Organization","name":"HelloInsights"},"publisher":{"@type":"Organization","name":"HelloInsights Technology"}}
+    {"@context":"https://schema.org","@type":"Article","headline":"","datePublished":"","image":"","author":{"@type":"Organization","name":"NextPixel"},"publisher":{"@type":"Organization","name":"NextPixel Technology"}}
     </script>
     <script type="application/ld+json" id="jsonldBreadcrumb">
-    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Technology","item":"https://technology.helloinsights.online/"}]}
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Technology","item":"https://nextpixel.site/"}]}
     </script>
 </head>
 <body>
@@ -130,7 +130,7 @@
     <footer class="tech-footer">
         <div class="footer-inner">
             <div class="footer-brand">
-                <strong>HelloInsights Technology</strong>
+                <strong>NextPixel Technology</strong>
                 <p>Editorial-grade technology coverage for the digital world.</p>
             </div>
             <div class="footer-col">
@@ -140,9 +140,7 @@
             <div class="footer-col">
                 <h4>Network</h4>
                 <ul>
-                    <li><a href="https://helloinsights.online" target="_blank" rel="noopener">HelloInsights Main</a></li>
-                    <li><a href="https://finance.helloinsights.online" target="_blank" rel="noopener">Finance</a></li>
-                    <li><a href="https://health.helloinsights.online" target="_blank" rel="noopener">Health</a></li>
+                    <li><a href="https://nextpixel.site" target="_blank" rel="noopener">NextPixel Main</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -154,7 +152,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 HelloInsights. All rights reserved.</p>
+            <p>&copy; 2025 NextPixel. All rights reserved.</p>
             <a href="about.html">About</a>
             <a href="privacy.html">Privacy</a>
         </div>
@@ -175,7 +173,7 @@
         var jsonFile = (typeof SITE_CONFIG !== 'undefined') ? SITE_CONFIG.jsonFile : 'technology-index.json';
         var fullJsonFile = (typeof SITE_CONFIG !== 'undefined') ? SITE_CONFIG.fullArticleJson : 'articles-technology.json';
         var opinionFile = 'opinions.json';
-        var base = 'https://technology.helloinsights.online';
+        var base = 'https://nextpixel.site';
 
         Promise.all([
             fetch(jsonFile, {cache:'no-cache'}).then(function(r){return r.json();}),
@@ -221,7 +219,7 @@
             var articleUrl = base + '/article.html?id=' + encodeURIComponent(art.id);
 
             // Meta
-            var titleText = art.title + ' | HelloInsights Technology';
+            var titleText = art.title + ' | NextPixel Technology';
             var descText = art.excerpt || art.title;
             document.title = titleText;
             document.getElementById('metaDesc').setAttribute('content', descText);
@@ -241,8 +239,8 @@
                 "datePublished": art.date,
                 "image": imgUrl,
                 "description": descText,
-                "author": { "@type": "Organization", "name": "HelloInsights" },
-                "publisher": { "@type": "Organization", "name": "HelloInsights Technology" },
+                "author": { "@type": "Organization", "name": "NextPixel" },
+                "publisher": { "@type": "Organization", "name": "NextPixel Technology" },
                 "mainEntityOfPage": { "@type": "WebPage", "@id": articleUrl }
             };
             document.getElementById('jsonldArticle').textContent = JSON.stringify(jsonld);
@@ -375,3 +373,7 @@
     </script>
 </body>
 </html>
+
+
+
+

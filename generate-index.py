@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-HelloInsights — Universal Index Generator (Matrix-Ready)
+NextPixel — Universal Index Generator (Matrix-Ready)
 
 Reads a full articles JSON file (e.g. articles-finance.json) and a site config
 (e.g. site-config.js parsed for subcategories), then generates a lightweight

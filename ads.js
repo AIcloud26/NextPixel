@@ -1,4 +1,4 @@
-/* ads.js - Shared ad initialization for HelloInsights Technology */
+/* ads.js - Shared ad initialization for NextPixel Technology */
 (function(){
     var style=document.createElement('style');
     style.textContent='div[data-ad-slot]{height:0;overflow:hidden;transition:height .3s ease}';

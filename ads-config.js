@@ -1,5 +1,5 @@
 /**
- * HelloInsights — Centralized Ad Manager (ads-config.js)
+ * NextPixel — Centralized Ad Manager (ads-config.js)
  * Technology Sub-site
  * 
  * All ad slots are defined here. Toggle enabled/disabled per slot.
