@@ -61,7 +61,7 @@
 
     <!-- Article Hero Image (constrained width) -->
     <div class="article-hero-wrap">
-        <img id="articleHeroImg" src="" alt="" loading="eager" fetchpriority="high" width="800" height="450">
+        <img id="articleHeroImg" src="" alt="" loading="eager" fetchpriority="high" decoding="async" width="800" height="450">
     </div>
 
     <!-- Article -->
@@ -198,7 +198,7 @@
         });
 
         function renderArticle(art, content, opinion) {
-            // Hero image 鈥?use moderate size (800w), not full width
+            // Hero image 閳?use moderate size (800w), not full width
             var imgUrl = art.image || SITE_CONFIG.fallbackImage;
             imgUrl = imgUrl.replace(/w=\d+/, 'w=800').replace(/h=\d+/, 'h=450');
 
@@ -602,7 +602,7 @@
     });
 
     document.querySelectorAll('.dynamic-year').forEach(function (el) {
-        el.textContent = '© ' + year;
+        el.textContent = '漏 ' + year;
     });
 
     document.querySelectorAll('.dynamic-date').forEach(function (el) {
@@ -612,4 +612,3 @@
 </script>
 </body>
 </html>
-

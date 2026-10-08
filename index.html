@@ -282,7 +282,7 @@
                 imgUrl = imgUrl.replace(/w=\d+/, 'w=400').replace(/h=\d+/, 'h=280');
                 html += '<article class="latest-card">' +
                     '<a href="article.html?id=' + encodeURIComponent(art.id) + '" class="latest-img">' +
-                    '<img src="' + imgUrl + '" alt="' + esc(art.title) + '" loading="lazy" decoding="async" width="400" height="280">' +
+                    '<img src="' + imgUrl + '" alt="' + esc(art.title) + '" loading="lazy" decoding="async" width="400" height="225">' +
                     '</a>' +
                     '<div class="latest-card-body">' +
                     '<span class="latest-cat">' + esc(art.category) + '</span>' +
@@ -391,7 +391,7 @@
     });
 
     document.querySelectorAll('.dynamic-year').forEach(function (el) {
-        el.textContent = '© ' + year;
+        el.textContent = '漏 ' + year;
     });
 
     document.querySelectorAll('.dynamic-date').forEach(function (el) {
@@ -401,4 +401,3 @@
 </script>
 </body>
 </html>
-
