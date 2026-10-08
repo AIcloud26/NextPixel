@@ -61,7 +61,7 @@
 
     <!-- Article Hero Image (constrained width) -->
     <div class="article-hero-wrap">
-        <img id="articleHeroImg" src="" alt="" loading="eager" fetchpriority="high" decoding="async" width="800" height="450">
+        <img id="articleHeroImg" src="" alt="" loading="eager" fetchpriority="high" decoding="async" width="800" height="450" data-image-fallback onerror="this.onerror=null;this.src=SITE_CONFIG.fallbackImage;">
     </div>
 
     <!-- Article -->
@@ -300,7 +300,7 @@
                 imgUrl = imgUrl.replace(/w=\d+/, 'w=480').replace(/h=\d+/, 'h=270');
                 html += '<article class="related-card">' +
                     '<a href="article.html?id=' + encodeURIComponent(r.id) + '">' +
-                    '<img src="' + imgUrl + '" alt="' + esc(r.title) + '" loading="lazy" decoding="async" width="480" height="270">' +
+                    '<img src="' + imgUrl + '" alt="' + esc(r.title) + '" loading="lazy" decoding="async" width="480" height="270" onerror="this.onerror=null;this.src=SITE_CONFIG.fallbackImage;">' +
                     '<h3>' + esc(r.title) + '</h3>' +
                     '<time>' + fmtDate(r.date) + '</time>' +
                     '</a></article>';
@@ -553,7 +553,7 @@
 
             value = value.replace(
                 /!\[([^\]]*)\]\((https?:\/\/[^)\s]+)\)/g,
-                '<img src="$2" alt="$1" loading="lazy">'
+                '<img src="$2" alt="$1" loading="lazy" decoding="async" onerror="this.onerror=null;this.src=SITE_CONFIG.fallbackImage;">'
             );
 
             value = value.replace(

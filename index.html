@@ -257,7 +257,7 @@
                 var cls = i === 0 ? 'featured-main' : 'featured-side';
                 html += '<article class="featured-card ' + cls + '">' +
                     '<a href="article.html?id=' + encodeURIComponent(art.id) + '">' +
-                    '<img src="' + imgUrl + '" alt="' + esc(art.title) + '" loading="lazy" decoding="async" width="640" height="360">' +
+                    '<img src="' + imgUrl + '" alt="' + esc(art.title) + '" loading="lazy" decoding="async" width="640" height="360" onerror="this.onerror=null;this.src=SITE_CONFIG.fallbackImage;">' +
                     '<span class="featured-cat">' + esc(art.category) + '</span>' +
                     '<h3>' + esc(art.title) + '</h3>' +
                     '<p>' + esc(art.excerpt || '') + '</p>' +
@@ -279,10 +279,10 @@
                 markUsed(art.id);
                 latestShown++;
                 var imgUrl = art.image || SITE_CONFIG.fallbackImage;
-                imgUrl = imgUrl.replace(/w=\d+/, 'w=400').replace(/h=\d+/, 'h=280');
+                imgUrl = imgUrl.replace(/w=\d+/, 'w=400').replace(/h=\d+/, 'h=225');
                 html += '<article class="latest-card">' +
                     '<a href="article.html?id=' + encodeURIComponent(art.id) + '" class="latest-img">' +
-                    '<img src="' + imgUrl + '" alt="' + esc(art.title) + '" loading="lazy" decoding="async" width="400" height="225">' +
+                    '<img src="' + imgUrl + '" alt="' + esc(art.title) + '" loading="lazy" decoding="async" width="400" height="225" onerror="this.onerror=null;this.src=SITE_CONFIG.fallbackImage;">' +
                     '</a>' +
                     '<div class="latest-card-body">' +
                     '<span class="latest-cat">' + esc(art.category) + '</span>' +
@@ -318,7 +318,7 @@
                     imgUrl = imgUrl.replace(/w=\d+/, 'w=480').replace(/h=\d+/, 'h=270');
                     html += '<article class="topic-card">' +
                         '<a href="article.html?id=' + encodeURIComponent(art.id) + '">' +
-                        '<img src="' + imgUrl + '" alt="' + esc(art.title) + '" loading="lazy" decoding="async" width="480" height="270">' +
+                        '<img src="' + imgUrl + '" alt="' + esc(art.title) + '" loading="lazy" decoding="async" width="480" height="270" onerror="this.onerror=null;this.src=SITE_CONFIG.fallbackImage;">' +
                         '<h3>' + esc(art.title) + '</h3>' +
                         '<time>' + fmtDate(art.date) + '</time>' +
                         '</a></article>';
