@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -208,7 +208,7 @@
             var imgUrl = art.image || SITE_CONFIG.fallbackImage;
             imgUrl = imgUrl.replace(/w=\d+/, 'w=800').replace(/h=\d+/, 'h=450');
 
-            var catUrl = SITE_CONFIG.categoryUrlMap[art.subcategory] || 'index.html';
+            var catUrl = (SITE_CONFIG.categoryUrlMap && SITE_CONFIG.categoryUrlMap[art.subcategory]) || 'index.html';
             var catName = art.category || '';
             var articleUrl = base + '/article.html?id=' + encodeURIComponent(art.id);
 
