@@ -1,4 +1,4 @@
-﻿/**
+/**
  * NextPixel — Site Configuration
  * Matrix-ready: change SITE_CONFIG to deploy a new vertical subsite.
  *
@@ -8,7 +8,7 @@
 var SITE_CONFIG = {
     /* === Site Identity === */
     siteName: 'Technology',
-    fullSiteName: 'NextPixel Technology',
+    fullSiteName: 'NextPixel',
     tagline: 'Technology Insights for the Digital World',
     aboutText: 'Editorial-grade coverage of AI, software, cybersecurity, gadgets and emerging technology.',
 
@@ -33,7 +33,7 @@ var SITE_CONFIG = {
     metaDesc: 'Editorial coverage of AI, software, cybersecurity, gadgets, developer tools and emerging technology from NextPixel.',
 
     /* === Hero / Editorial === */
-    heroIntro: '<p>NextPixel Technology covers the technologies reshaping how we work, build, and live &mdash; with reporting that cuts through vendor hype.</p><p>Our editors track artificial intelligence, software, cybersecurity, hardware, and the infrastructure behind modern computing. We focus on what changes, what it costs, and who it actually affects.</p>',
+    heroIntro: '<p>NextPixel covers the technologies reshaping how we work, build, and live &mdash; with reporting that cuts through vendor hype.</p><p>Our editors track artificial intelligence, software, cybersecurity, hardware, and the infrastructure behind modern computing. We focus on what changes, what it costs, and who it actually affects.</p>',
 
     /* === Subcategories === */
     subcategories: [

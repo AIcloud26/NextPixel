@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | NextPixel Technology</title>
-    <meta name="description" content="Privacy Policy for NextPixel Technology.">
+    <title>Privacy Policy | NextPixel</title>
+    <meta name="description" content="Privacy Policy for NextPixel.">
     <link rel="canonical" href="https://nextpixel.site/privacy.html">
     <script src="site-config.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -32,9 +32,9 @@
     <article class="tech-article static-page">
         <div class="article-content-wrap">
             <h1>Privacy Policy</h1>
-            <p><em>Last updated: August 2025</em></p>
+            <p><em>Last updated: <span class="dynamic-date"></span></em></p>
 
-            <p>NextPixel Technology ("we", "us", or "our") operates nextpixel.site. This page explains how we collect, use, and protect information when you visit our website.</p>
+            <p>NextPixel ("we", "us", or "our") operates nextpixel.site. This page explains how we collect, use, and protect information when you visit our website.</p>
 
             <h2>Information We Collect</h2>
             <p>We collect minimal information necessary to operate and improve the site:</p>
@@ -63,7 +63,7 @@
             <p>Our articles may link to external websites. We are not responsible for the privacy practices of those sites. We encourage you to review their privacy policies.</p>
 
             <h2>Your Rights</h2>
-            <p>Depending on your jurisdiction, you may have the right to access, correct, or delete personal data we hold about you. For any such request, contact us at <a href="mailto:privacy@nextpixel.site">privacy@nextpixel.site</a>.</p>
+            <p>Depending on your jurisdiction, you may have the right to access, correct, or delete personal data we hold about you. For any such request, contact us at <a href="mailto:info@nextpixel.site">info@nextpixel.site</a>.</p>
 
             <h2>Children's Privacy</h2>
             <p>This site is not directed to children under 13, and we do not knowingly collect personal information from children.</p>
@@ -72,7 +72,7 @@
             <p>We may update this policy from time to time. Changes will be posted on this page with an updated date.</p>
 
             <h2>Contact</h2>
-            <p>For privacy-related questions, email <a href="mailto:privacy@nextpixel.site">privacy@nextpixel.site</a>.</p>
+            <p>For privacy-related questions, email <a href="mailto:info@nextpixel.site">info@nextpixel.site</a>.</p>
 
             <div class="back-home" style="margin-top:40px;">
                 <a href="/">&larr; Back to Technology</a>
@@ -83,18 +83,12 @@
     <footer class="tech-footer">
         <div class="footer-inner">
             <div class="footer-brand">
-                <strong>NextPixel Technology</strong>
+                <strong>NextPixel</strong>
                 <p>Editorial-grade technology coverage for the digital world.</p>
             </div>
             <div class="footer-col">
                 <h4>Topics</h4>
                 <ul id="footerTopics"></ul>
-            </div>
-            <div class="footer-col">
-                <h4>Network</h4>
-                <ul>
-                    <li><a href="https://nextpixel.site" target="_blank" rel="noopener">NextPixel Main</a></li>
-                </ul>
             </div>
             <div class="footer-col">
                 <h4>About</h4>
@@ -105,7 +99,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 NextPixel. All rights reserved.</p>
+            <p><span class="dynamic-year"></span> NextPixel. All rights reserved.</p>
         </div>
     </footer>
 
@@ -125,12 +119,24 @@
         });
     })();
     </script>
+<script>
+(function () {
+    var now = new Date();
+    var year = now.getFullYear();
+    var dateText = now.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long'
+    });
+
+    document.querySelectorAll('.dynamic-year').forEach(function (el) {
+        el.textContent = '© ' + year;
+    });
+
+    document.querySelectorAll('.dynamic-date').forEach(function (el) {
+        el.textContent = dateText;
+    });
+})();
+</script>
 </body>
 </html>
-
-
-
-
-
-
 

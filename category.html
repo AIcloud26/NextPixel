@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Category | NextPixel Technology</title>
+    <title id="pageTitle">Category | NextPixel</title>
     <meta name="description" id="metaDesc" content="Technology category from NextPixel.">
     <link rel="canonical" id="canonicalUrl" href="https://nextpixel.site/">
     <!-- OG -->
@@ -11,7 +11,7 @@
     <meta property="og:title" id="ogTitle" content="">
     <meta property="og:description" id="ogDesc" content="">
     <meta property="og:url" id="ogUrl" content="">
-    <meta property="og:site_name" content="NextPixel Technology">
+    <meta property="og:site_name" content="NextPixel">
     <meta property="og:image" id="ogImage" content="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=630&fit=crop">
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -89,7 +89,7 @@
     <footer class="tech-footer">
         <div class="footer-inner">
             <div class="footer-brand">
-                <strong>NextPixel Technology</strong>
+                <strong>NextPixel</strong>
                 <p>Editorial-grade technology coverage for the digital world.</p>
             </div>
             <div class="footer-col">
@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 NextPixel. All rights reserved.</p>
+            <p><span class="dynamic-year"></span> NextPixel. All rights reserved.</p>
         </div>
     </footer>
 
@@ -279,13 +279,24 @@
         function esc(s) { if (!s) return ''; var d = document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; }
     })();
     </script>
+<script>
+(function () {
+    var now = new Date();
+    var year = now.getFullYear();
+    var dateText = now.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long'
+    });
+
+    document.querySelectorAll('.dynamic-year').forEach(function (el) {
+        el.textContent = '© ' + year;
+    });
+
+    document.querySelectorAll('.dynamic-date').forEach(function (el) {
+        el.textContent = dateText;
+    });
+})();
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
 

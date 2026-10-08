@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Article | NextPixel Technology</title>
+    <title id="pageTitle">Article | NextPixel</title>
     <meta name="description" id="metaDesc" content="Technology article from NextPixel.">
     <link rel="canonical" id="canonicalUrl" href="https://nextpixel.site/">
     <!-- OG -->
     <meta property="og:type" content="article">
-    <meta property="og:title" id="ogTitle" content="Article | NextPixel Technology">
+    <meta property="og:title" id="ogTitle" content="Article | NextPixel">
     <meta property="og:description" id="ogDesc" content="">
     <meta property="og:url" id="ogUrl" content="https://nextpixel.site/">
-    <meta property="og:site_name" content="NextPixel Technology">
+    <meta property="og:site_name" content="NextPixel">
     <meta property="og:image" id="ogImage" content="">
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="style.css">
     <!-- JSON-LD -->
     <script type="application/ld+json" id="jsonldArticle">
-    {"@context":"https://schema.org","@type":"Article","headline":"","datePublished":"","image":"","author":{"@type":"Organization","name":"NextPixel"},"publisher":{"@type":"Organization","name":"NextPixel Technology"}}
+    {"@context":"https://schema.org","@type":"Article","headline":"","datePublished":"","image":"","author":{"@type":"Organization","name":"NextPixel"},"publisher":{"@type":"Organization","name":"NextPixel"}}
     </script>
     <script type="application/ld+json" id="jsonldBreadcrumb">
     {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Technology","item":"https://nextpixel.site/"}]}
@@ -124,18 +124,12 @@
     <footer class="tech-footer">
         <div class="footer-inner">
             <div class="footer-brand">
-                <strong>NextPixel Technology</strong>
+                <strong>NextPixel</strong>
                 <p>Editorial-grade technology coverage for the digital world.</p>
             </div>
             <div class="footer-col">
                 <h4>Topics</h4>
                 <ul id="footerTopics"></ul>
-            </div>
-            <div class="footer-col">
-                <h4>Network</h4>
-                <ul>
-                    <li><a href="https://nextpixel.site" target="_blank" rel="noopener">NextPixel Main</a></li>
-                </ul>
             </div>
             <div class="footer-col">
                 <h4>About</h4>
@@ -146,7 +140,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 NextPixel. All rights reserved.</p>
+            <p><span class="dynamic-year"></span> NextPixel. All rights reserved.</p>
             <a href="about.html">About</a>
             <a href="privacy.html">Privacy</a>
         </div>
@@ -204,7 +198,7 @@
         });
 
         function renderArticle(art, content, opinion) {
-            // Hero image — use moderate size (800w), not full width
+            // Hero image 鈥?use moderate size (800w), not full width
             var imgUrl = art.image || SITE_CONFIG.fallbackImage;
             imgUrl = imgUrl.replace(/w=\d+/, 'w=800').replace(/h=\d+/, 'h=450');
 
@@ -213,7 +207,7 @@
             var articleUrl = base + '/article.html?id=' + encodeURIComponent(art.id);
 
             // Meta
-            var titleText = art.title + ' | NextPixel Technology';
+            var titleText = art.title + ' | NextPixel';
             var descText = art.excerpt || art.title;
             document.title = titleText;
             document.getElementById('metaDesc').setAttribute('content', descText);
@@ -234,7 +228,7 @@
                 "image": imgUrl,
                 "description": descText,
                 "author": { "@type": "Organization", "name": "NextPixel" },
-                "publisher": { "@type": "Organization", "name": "NextPixel Technology" },
+                "publisher": { "@type": "Organization", "name": "NextPixel" },
                 "mainEntityOfPage": { "@type": "WebPage", "@id": articleUrl }
             };
             document.getElementById('jsonldArticle').textContent = JSON.stringify(jsonld);
@@ -598,13 +592,24 @@
         function esc(s) { if (!s) return ''; var d = document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; }
     })();
     </script>
+<script>
+(function () {
+    var now = new Date();
+    var year = now.getFullYear();
+    var dateText = now.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long'
+    });
+
+    document.querySelectorAll('.dynamic-year').forEach(function (el) {
+        el.textContent = '© ' + year;
+    });
+
+    document.querySelectorAll('.dynamic-date').forEach(function (el) {
+        el.textContent = dateText;
+    });
+})();
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
 

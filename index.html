@@ -11,7 +11,7 @@
     <meta property="og:title" content="Technology Insights on AI, Software, Cybersecurity & Gadgets | NextPixel">
     <meta property="og:description" content="Explore the latest in AI, software, cybersecurity, gadgets, developer tools and emerging technology from NextPixel.">
     <meta property="og:url" content="https://nextpixel.site/">
-    <meta property="og:site_name" content="NextPixel Technology">
+    <meta property="og:site_name" content="NextPixel">
     <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=630&fit=crop">
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -28,7 +28,7 @@
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "NextPixel Technology",
+        "name": "NextPixel",
         "url": "https://nextpixel.site/",
         "description": "Explore the latest in AI, software, cybersecurity, gadgets, developer tools and emerging technology.",
         "publisher": { "@type": "Organization", "name": "NextPixel" }
@@ -123,7 +123,7 @@
                 <h2>Stay Ahead of the Curve</h2>
                 <p>Get the week's most important technology stories delivered to your inbox every Friday.</p>
                 <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you! You\'ll receive our next digest.');">
-                    <input type="email" placeholder="your@email.com" required aria-label="Email address">
+                    <input type="email" placeholder="info@nextpixel.site" required aria-label="Email address">
                     <button type="submit">Subscribe</button>
                 </form>
             </div>
@@ -137,18 +137,12 @@
     <footer class="tech-footer">
         <div class="footer-inner">
             <div class="footer-brand">
-                <strong>NextPixel Technology</strong>
+                <strong>NextPixel</strong>
                 <p>Editorial-grade technology coverage for the digital world. We analyze what matters, who it affects, and where it's heading.</p>
             </div>
             <div class="footer-col">
                 <h4>Topics</h4>
                 <ul id="footerTopics"></ul>
-            </div>
-            <div class="footer-col">
-                <h4>Network</h4>
-                <ul>
-                    <li><a href="https://nextpixel.site" target="_blank" rel="noopener">NextPixel Main</a></li>
-                </ul>
             </div>
             <div class="footer-col">
                 <h4>About</h4>
@@ -160,7 +154,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 NextPixel. All rights reserved.</p>
+            <p><span class="dynamic-year"></span> NextPixel. All rights reserved.</p>
             <a href="about.html">About</a>
             <a href="privacy.html">Privacy</a>
         </div>
@@ -211,7 +205,7 @@
                         });
                     }
                     if (catInfo) {
-                        document.title = catInfo.name + ' - NextPixel Technology';
+                        document.title = catInfo.name + ' - NextPixel';
                         var metaDesc = document.querySelector('meta[name="description"]');
                         if (metaDesc) metaDesc.setAttribute('content', catInfo.desc);
                         var heroTitle = document.getElementById('heroTitle');
@@ -387,6 +381,24 @@
         function esc(s) { if (!s) return ''; var d = document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; }
     })();
     </script>
+<script>
+(function () {
+    var now = new Date();
+    var year = now.getFullYear();
+    var dateText = now.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long'
+    });
+
+    document.querySelectorAll('.dynamic-year').forEach(function (el) {
+        el.textContent = '© ' + year;
+    });
+
+    document.querySelectorAll('.dynamic-date').forEach(function (el) {
+        el.textContent = dateText;
+    });
+})();
+</script>
 </body>
 </html>
 
