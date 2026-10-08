@@ -315,7 +315,7 @@
             SITE_CONFIG.subcategories.forEach(function(sub) {
                 var arts = allArticles.filter(function(a) { return a.subcategory === sub.id; }).slice(0, 3);
                 if (arts.length === 0) return;
-                var url = SITE_CONFIG.categoryUrlMap[sub.id] || 'index.html?cat=' + sub.id;
+                var url = 'index.html?cat=' + sub.id;
                 html += '<section class="topic-section"><div class="container">' +
                     '<div class="topic-header"><h2>' + esc(sub.name) + '</h2><a href="' + url + '" class="view-all">View all &rarr;</a></div>' +
                     '<div class="topic-grid">';
@@ -350,7 +350,7 @@
             var ul = document.getElementById('footerTopics');
             var html = '';
             SITE_CONFIG.subcategories.forEach(function(sub) {
-                var url = SITE_CONFIG.categoryUrlMap[sub.id] || 'index.html?cat=' + sub.id;
+                var url = 'index.html?cat=' + sub.id;
                 html += '<li><a href="' + url + '">' + esc(sub.name) + '</a></li>';
             });
             ul.innerHTML = html;
@@ -389,10 +389,4 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
 

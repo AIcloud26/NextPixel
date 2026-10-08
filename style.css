@@ -48,7 +48,7 @@ body {
     display: flex; align-items: center; gap: 10px;
     text-decoration: none; flex-shrink: 0;
 }
-.tech-logo img { display:block; }
+.tech-logo img { display:block; width:170px; height:auto; }
 
 .tech-nav {
     display: flex; gap: 2px; list-style: none;
@@ -538,5 +538,4 @@ body {
     .container { max-width: 100%; padding: 0; }
     .article-hero-wrap { max-width: 100%; padding: 0; }
 }
-
 
