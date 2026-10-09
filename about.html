@@ -1,14 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | NextPixel</title>
-    <meta name="description" content="About NextPixel 鈥?editorial-grade coverage of AI, software, cybersecurity, gadgets and emerging technology.">
-    <link rel="canonical" href="https://nextpixel.site/about.html">
+    <meta name="description" content="About NextPixel 閳?editorial-grade coverage of AI, software, cybersecurity, gadgets and emerging technology.">
+    <link rel="canonical" href="https://tech.nextpixel.site/about.html">
     <script src="site-config.js"></script>
     <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script src="/assets/nextpixel-ga4-config.js"></script>
+    <script src="/assets/nextpixel-ga4.js"></script>
 </head>
 <body>
     <header class="tech-header">
@@ -56,11 +58,6 @@
             <h2>Editorial Standards</h2>
             <p>Accuracy matters to us. If you believe we have published an error, please contact us and we will investigate promptly and correct where appropriate.</p>
 
-            <h2 id="contact">Contact</h2>
-            <p>For editorial inquiries, corrections, or feedback, reach us at <a href="mailto:info@nextpixel.site">info@nextpixel.site</a>. For advertising or partnership questions, contact <a href="mailto:info@nextpixel.site">info@nextpixel.site</a>.</p>
-
-            <h2>Our Network</h2>
-            <p>NextPixel is part of the NextPixel network, which also covers, health, and other verticals. Visit the <a href="https://nextpixel.site" target="_blank" rel="noopener">NextPixel main site</a> for the full picture.</p>
 
             <div class="back-home" style="margin-top:40px;">
                 <a href="/">&larr; Back to Technology</a>
@@ -83,6 +80,7 @@
                 <ul>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -92,21 +90,40 @@
     </footer>
 
     <script>
-    (function() {
-        var ul = document.getElementById('footerTopics');
-        if (typeof SITE_CONFIG !== 'undefined') {
-            var html = '';
-            SITE_CONFIG.subcategories.forEach(function(sub) {
-                var url = SITE_CONFIG.categoryUrlMap[sub.id] || 'index.html?cat=' + sub.id;
-                html += '<li><a href="' + url + '">' + sub.name + '</a></li>';
-            });
-            ul.innerHTML = html;
-        }
-        document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('mainNav').classList.toggle('nav-open');
+(function () {
+    var ul = document.getElementById('footerTopics');
+    var cfg = window.SITE_CONFIG;
+
+    if (ul) {
+        var topics = cfg && Array.isArray(cfg.subcategories) ? cfg.subcategories : [];
+        var fallbackTopics = [
+            { id: 'ai', name: 'Artificial Intelligence' },
+            { id: 'software', name: 'Software & Apps' },
+            { id: 'cybersecurity', name: 'Cybersecurity' },
+            { id: 'gadgets', name: 'Gadgets' },
+            { id: 'developer', name: 'Developer Technology' },
+            { id: 'future-tech', name: 'Future Technology' }
+        ];
+
+        if (!topics.length) topics = fallbackTopics;
+
+        ul.innerHTML = topics.map(function (sub) {
+            var id = String(sub.id || '');
+            var name = String(sub.name || id);
+            var url = 'index.html?cat=' + encodeURIComponent(id);
+            return '<li><a href="' + url + '">' + name + '</a></li>';
+        }).join('');
+    }
+
+    var toggle = document.getElementById('menuToggle');
+    var nav = document.getElementById('mainNav');
+    if (toggle && nav) {
+        toggle.addEventListener('click', function () {
+            nav.classList.toggle('nav-open');
         });
-    })();
-    </script>
+    }
+})();
+</script>
 <script>
 (function () {
     var now = new Date();
@@ -127,3 +144,5 @@
 </script>
 </body>
 </html>
+
+

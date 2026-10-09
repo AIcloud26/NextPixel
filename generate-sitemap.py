@@ -42,6 +42,13 @@ def generate_sitemap(articles, domain, subcategories=None):
     SubElement(url_home, 'changefreq').text = 'daily'
     SubElement(url_home, 'priority').text = '1.0'
     
+    # 1b. Static editorial pages
+    for page in ('about.html', 'privacy.html', 'contact.html'):
+        url_static = SubElement(urlset, 'url')
+        SubElement(url_static, 'loc').text = f'{base}/{page}'
+        SubElement(url_static, 'lastmod').text = today
+        SubElement(url_static, 'changefreq').text = 'yearly'
+        SubElement(url_static, 'priority').text = '0.3'
     # 2. Category pages
     if subcategories:
         for subcat in subcategories:
@@ -81,7 +88,7 @@ def main():
     
     if '--domain' in sys.argv:
         idx = sys.argv.index('--domain')
-        domain = sys.argv[idx + 1] if idx + 1 < len(sys.argv) else 'nextpixel.site'
+        domain = sys.argv[idx + 1] if idx + 1 < len(sys.argv) else 'tech.nextpixel.site'
     if '--output' in sys.argv:
         idx = sys.argv.index('--output')
         output_path = sys.argv[idx + 1] if idx + 1 < len(sys.argv) else 'sitemap.xml'
@@ -91,11 +98,11 @@ def main():
         output_path = sys.argv[3] if len(sys.argv) > 3 else 'sitemap.xml'
         with open(site_config_path, 'r', encoding='utf-8') as f:
             config = json.load(f)
-        domain = config.get('domain', 'nextpixel.site')
+        domain = config.get('domain', 'tech.nextpixel.site')
         subcategories = config.get('subcategories')
     
     if not domain:
-        domain = 'nextpixel.site'
+        domain = 'tech.nextpixel.site'
     
     # Read index
     with open(index_path, 'r', encoding='utf-8') as f:
@@ -106,13 +113,12 @@ def main():
     # Default subcategories if not provided
     if not subcategories:
         subcategories = [
-            {"id": "personal-finance", "name": "Personal Finance"},
-            {"id": "investing", "name": "Investing"},
-            {"id": "markets", "name": "Markets"},
-            {"id": "banking", "name": "Banking"},
-            {"id": "fintech", "name": "Fintech"},
-            {"id": "economy", "name": "Economy"},
-            {"id": "money-management", "name": "Money Management"}
+            {"id": "ai", "name": "Artificial Intelligence"},
+            {"id": "software", "name": "Software & Apps"},
+            {"id": "cybersecurity", "name": "Cybersecurity"},
+            {"id": "gadgets", "name": "Gadgets"},
+            {"id": "developer", "name": "Developer Technology"},
+            {"id": "future-tech", "name": "Future Tech"}
         ]
     
     # Generate
@@ -126,10 +132,14 @@ def main():
     print(f"  Homepage: 1")
     print(f"  Category pages: {cat_count}")
     print(f"  Article pages: {len(articles)}")
-    print(f"  Total URLs: {1 + cat_count + len(articles)}")
+    print(f"  Static pages: 3")
+    print(f"  Total URLs: {1 + 3 + cat_count + len(articles)}")
 
 
 if __name__ == '__main__':
     main()
+
+
+
 
 

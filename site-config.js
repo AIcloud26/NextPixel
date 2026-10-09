@@ -13,7 +13,7 @@ var SITE_CONFIG = {
     aboutText: 'Editorial-grade coverage of AI, software, cybersecurity, gadgets and emerging technology.',
 
     /* === Domain & URLs === */
-    baseUrl: 'https://nextpixel.site',
+    baseUrl: 'https://tech.nextpixel.site',
     mainSiteUrl: 'https://nextpixel.site',
     siblingSites: [],
 

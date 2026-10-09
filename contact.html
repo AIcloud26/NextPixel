@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | NextPixel</title>
+    <meta name="description" content="Contact NextPixel for editorial inquiries, corrections, feedback, advertising, and partnership opportunities.">
+    <link rel="canonical" href="https://tech.nextpixel.site/contact.html">
+    <script src="site-config.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script src="/assets/nextpixel-ga4-config.js"></script>
+    <script src="/assets/nextpixel-ga4.js"></script>
+    <style>
+        .contact-layout { max-width: 1080px; margin: 0 auto; padding: 48px 24px 64px; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; }
+        .contact-intro h1 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; margin: 0 0 18px; }
+        .contact-intro p { line-height: 1.8; color: var(--text-secondary, #606875); }
+        .contact-email { margin-top: 28px; padding: 22px; border: 1px solid var(--border, #e5e7eb); border-radius: 12px; }
+        .contact-email a { font-weight: 600; }
+        .contact-form { padding: 28px; border: 1px solid var(--border, #e5e7eb); border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.04); }
+        .contact-form h2 { margin: 0 0 22px; }
+        .contact-field { margin-bottom: 18px; }
+        .contact-field label { display: block; font-weight: 600; margin-bottom: 7px; }
+        .contact-field input, .contact-field select, .contact-field textarea { box-sizing: border-box; width: 100%; padding: 12px 13px; border: 1px solid #cfd4dc; border-radius: 7px; font: inherit; background: #fff; color: #20242b; }
+        .contact-field textarea { min-height: 150px; resize: vertical; }
+        .contact-submit { padding: 12px 20px; border: 0; border-radius: 7px; background: var(--accent, #f47b20); color: #fff; font: inherit; font-weight: 700; cursor: pointer; }
+        .contact-note { font-size: .84rem; color: var(--text-secondary, #606875); line-height: 1.6; margin-top: 14px; }
+        @media (max-width: 760px) { .contact-layout { grid-template-columns: 1fr; padding: 32px 16px 44px; gap: 28px; } .contact-form { padding: 20px; } }
+    </style>
+</head>
+<body>
+    <header class="tech-header">
+        <div class="header-inner">
+            <a href="/" class="tech-logo"><img src="/logo.svg" alt="NextPixel"></a>
+            <nav class="tech-nav" id="mainNav">
+                <a href="index.html?cat=ai">AI</a>
+                <a href="index.html?cat=software">Software</a>
+                <a href="index.html?cat=cybersecurity">Cybersecurity</a>
+                <a href="index.html?cat=gadgets">Gadgets</a>
+                <a href="index.html?cat=developer">Developer</a>
+                <a href="index.html?cat=future-tech">Future Tech</a>
+            </nav>
+            <div class="header-actions">
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="contact-layout">
+        <section class="contact-intro">
+            <p class="eyebrow">CONTACT NEXTPixel</p>
+            <h1>Let's talk.</h1>
+            <p>Have a correction, a story suggestion, feedback on our coverage, or a question about working with NextPixel? Send us a message. Choose the topic that best fits your inquiry so it can be directed appropriately.</p>
+            <div class="contact-email">
+                <h2>Email us directly</h2>
+                <p>For editorial inquiries, corrections, feedback, advertising, and partnerships:</p>
+                <a href="mailto:info@nextpixel.site">info@nextpixel.site</a>
+            </div>
+        </section>
+
+        <section class="contact-form">
+            <h2>Send us a message</h2>
+            <form action="mailto:info@nextpixel.site" method="post" enctype="text/plain">
+                <div class="contact-field">
+                    <label for="contact-name">Name</label>
+                    <input id="contact-name" name="Name" type="text" autocomplete="name" required>
+                </div>
+                <div class="contact-field">
+                    <label for="contact-email">Email address</label>
+                    <input id="contact-email" name="Email" type="email" autocomplete="email" required>
+                </div>
+                <div class="contact-field">
+                    <label for="contact-subject">What is your message about?</label>
+                    <select id="contact-subject" name="Subject" required>
+                        <option value="">Select a topic</option>
+                        <option>Editorial inquiry or correction</option>
+                        <option>Feedback or suggestion</option>
+                        <option>Advertising or partnership</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="contact-field">
+                    <label for="contact-message">Message</label>
+                    <textarea id="contact-message" name="Message" required></textarea>
+                </div>
+                <button class="contact-submit" type="submit">Send message</button>
+                <p class="contact-note">Submitting opens your default email application. If that is not available, email us directly at info@nextpixel.site. Please do not include sensitive personal or financial information.</p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="tech-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <strong>NextPixel</strong>
+                <p>Editorial-grade technology coverage for the digital world.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Topics</h4>
+                <ul id="footerTopics">
+                    <li><a href="index.html?cat=ai">Artificial Intelligence</a></li>
+                    <li><a href="index.html?cat=software">Software &amp; Apps</a></li>
+                    <li><a href="index.html?cat=cybersecurity">Cybersecurity</a></li>
+                    <li><a href="index.html?cat=gadgets">Gadgets</a></li>
+                    <li><a href="index.html?cat=developer">Developer Technology</a></li>
+                    <li><a href="index.html?cat=future-tech">Future Technology</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p><span class="dynamic-year"></span> NextPixel. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+    (function () {
+        var toggle = document.getElementById('menuToggle');
+        var nav = document.getElementById('mainNav');
+        if (toggle && nav) toggle.addEventListener('click', function () { nav.classList.toggle('nav-open'); });
+        document.querySelectorAll('.dynamic-year').forEach(function (el) {
+            el.innerHTML = '&copy; ' + new Date().getFullYear();
+        });
+    })();
+    </script>
+</body>
+</html>
+

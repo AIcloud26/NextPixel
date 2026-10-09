@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">Article | NextPixel</title>
     <meta name="description" id="metaDesc" content="Technology article from NextPixel.">
-    <link rel="canonical" id="canonicalUrl" href="https://nextpixel.site/">
+    <link rel="canonical" id="canonicalUrl" href="https://tech.nextpixel.site/">
     <!-- OG -->
     <meta property="og:type" content="article">
     <meta property="og:title" id="ogTitle" content="Article | NextPixel">
     <meta property="og:description" id="ogDesc" content="">
-    <meta property="og:url" id="ogUrl" content="https://nextpixel.site/">
+    <meta property="og:url" id="ogUrl" content="https://tech.nextpixel.site/">
     <meta property="og:site_name" content="NextPixel">
     <meta property="og:image" id="ogImage" content="">
     <!-- Twitter -->
@@ -27,9 +27,11 @@
     {"@context":"https://schema.org","@type":"Article","headline":"","datePublished":"","image":"","author":{"@type":"Organization","name":"NextPixel"},"publisher":{"@type":"Organization","name":"NextPixel"}}
     </script>
     <script type="application/ld+json" id="jsonldBreadcrumb">
-    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Technology","item":"https://nextpixel.site/"}]}
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Technology","item":"https://tech.nextpixel.site/"}]}
     </script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script src="/assets/nextpixel-ga4-config.js"></script>
+    <script src="/assets/nextpixel-ga4.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -136,6 +138,7 @@
                 <ul>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -147,6 +150,7 @@
     </footer>
 
     <!-- Ads -->
+<script src="ads-placements.js"></script>
     <script src="ads-config.js"></script>
     <script src="ads.js"></script>
 
@@ -161,7 +165,7 @@
         var jsonFile = (typeof SITE_CONFIG !== 'undefined') ? SITE_CONFIG.jsonFile : 'technology-index.json';
         var fullJsonFile = (typeof SITE_CONFIG !== 'undefined') ? SITE_CONFIG.fullArticleJson : 'articles-technology.json';
         var opinionFile = 'opinions.json';
-        var base = 'https://nextpixel.site';
+        var base = 'https://tech.nextpixel.site';
 
         Promise.all([
             fetch(jsonFile, {cache:'no-cache'}).then(function(r){return r.json();}),
@@ -198,7 +202,7 @@
         });
 
         function renderArticle(art, content, opinion) {
-            // Hero image 閳?use moderate size (800w), not full width
+            // Hero image 闁?use moderate size (800w), not full width
             var imgUrl = art.image || SITE_CONFIG.fallbackImage;
             imgUrl = imgUrl.replace(/w=\d+/, 'w=800').replace(/h=\d+/, 'h=450');
 
@@ -612,3 +616,4 @@
 </script>
 </body>
 </html>
+

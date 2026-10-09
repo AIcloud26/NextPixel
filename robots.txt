@@ -62,4 +62,4 @@ Disallow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://nextpixel.site/sitemap.xml
+Sitemap: https://tech.nextpixel.site/sitemap.xml

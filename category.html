@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="pageTitle">Category | NextPixel</title>
     <meta name="description" id="metaDesc" content="Technology category from NextPixel.">
-    <link rel="canonical" id="canonicalUrl" href="https://nextpixel.site/">
+    <link rel="canonical" id="canonicalUrl" href="https://tech.nextpixel.site/">
     <!-- OG -->
     <meta property="og:type" content="website">
     <meta property="og:title" id="ogTitle" content="">
@@ -24,9 +24,11 @@
     <link rel="stylesheet" href="style.css">
     <!-- JSON-LD Breadcrumb -->
     <script type="application/ld+json" id="jsonldBreadcrumb">
-    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Technology","item":"https://nextpixel.site/"}]}
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Technology","item":"https://tech.nextpixel.site/"}]}
     </script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script src="/assets/nextpixel-ga4-config.js"></script>
+    <script src="/assets/nextpixel-ga4.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -100,8 +102,12 @@
                 <h4>More</h4>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="https://nextpixel.site" target="_blank">NextPixel Main</a></li>
+                    <li><a href="https://tech.nextpixel.site" target="_blank">NextPixel Main</a></li>
                 </ul>
+            </div>
+            <div class="footer-col">
+                <h4>About</h4>
+                <ul><li><a href="about.html">About Us</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="contact.html">Contact</a></li></ul>
             </div>
         </div>
         <div class="footer-bottom">
@@ -110,6 +116,7 @@
     </footer>
 
     <!-- Ads -->
+<script src="ads-placements.js"></script>
     <script src="ads-config.js"></script>
     <script src="ads.js"></script>
 
@@ -145,9 +152,9 @@
             return;
         }
 
-        var base = 'https://nextpixel.site';
+        var base = 'https://tech.nextpixel.site';
         var catUrl = base + '/' + currentCatId + '/';
-        var pageTitleText = catConfig.name + ' —' + SITE_CONFIG.siteName + ' | NextPixel';
+        var pageTitleText = catConfig.name + ' 鈥? + SITE_CONFIG.siteName + ' | NextPixel';
         var pageDesc = catConfig.desc + ' Expert analysis and news from the NextPixel editorial team.';
 
         document.title = pageTitleText;
@@ -289,7 +296,7 @@
     });
 
     document.querySelectorAll('.dynamic-year').forEach(function (el) {
-        el.textContent = '© ' + year;
+        el.textContent = '漏 ' + year;
     });
 
     document.querySelectorAll('.dynamic-date').forEach(function (el) {

@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Technology Insights on AI, Software, Cybersecurity & Gadgets | NextPixel</title>
     <meta name="description" content="Explore the latest in AI, software, cybersecurity, gadgets, developer tools and emerging technology from NextPixel.">
-    <link rel="canonical" href="https://nextpixel.site/">
+    <link rel="canonical" href="https://tech.nextpixel.site/">
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Technology Insights on AI, Software, Cybersecurity & Gadgets | NextPixel">
     <meta property="og:description" content="Explore the latest in AI, software, cybersecurity, gadgets, developer tools and emerging technology from NextPixel.">
-    <meta property="og:url" content="https://nextpixel.site/">
+    <meta property="og:url" content="https://tech.nextpixel.site/">
     <meta property="og:site_name" content="NextPixel">
     <meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=630&fit=crop">
     <!-- Twitter -->
@@ -21,6 +21,14 @@
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <!-- Config -->
     <script src="site-config.js"></script>
+<script>
+(function () {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('cat')) {
+        document.documentElement.classList.add('category-view');
+    }
+})();
+</script>
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
     <!-- JSON-LD: WebSite -->
@@ -29,12 +37,14 @@
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "NextPixel",
-        "url": "https://nextpixel.site/",
+        "url": "https://tech.nextpixel.site/",
         "description": "Explore the latest in AI, software, cybersecurity, gadgets, developer tools and emerging technology.",
         "publisher": { "@type": "Organization", "name": "NextPixel" }
     }
     </script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script src="/assets/nextpixel-ga4-config.js"></script>
+    <script src="/assets/nextpixel-ga4.js"></script>
 </head>
 <body>
     <!-- ===== HEADER ===== -->
@@ -149,6 +159,7 @@
                 <ul>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                     <li><a href="about.html#contact">Contact</a></li>
                 </ul>
             </div>
@@ -161,6 +172,7 @@
     </footer>
 
     <!-- Ads -->
+<script src="ads-placements.js"></script>
     <script src="ads-config.js"></script>
     <script src="ads.js"></script>
 
@@ -176,6 +188,21 @@
 
         var params = new URLSearchParams(window.location.search);
         currentCat = params.get('cat') || '';
+
+        // Set the category HERO before asynchronous article data loads.
+        if (currentCat && typeof SITE_CONFIG !== 'undefined') {
+            var earlyCat = SITE_CONFIG.subcategories.find(function (sub) {
+                return sub.id === currentCat;
+            });
+            if (earlyCat) {
+                document.getElementById('heroTitle').textContent = earlyCat.name;
+                document.getElementById('heroDesc').textContent = earlyCat.desc;
+                var earlyCta = document.getElementById('heroCta');
+                earlyCta.textContent = 'Browse ' + earlyCat.name;
+                earlyCta.href = '#latest';
+            }
+        }
+        document.documentElement.classList.add('category-ready');
 
         function markUsed(id) { usedIds[id] = true; }
         function isUsed(id) { return !!usedIds[id]; }
@@ -406,3 +433,4 @@
 </script>
 </body>
 </html>
+
