@@ -1,0 +1,75 @@
+﻿name: NextPixel Auto Articles
+
+on:
+  schedule:
+    - cron: "0 1 * * 1,3,5"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "auto = AI chooses a topic; manual = use your topic"
+        required: true
+        type: choice
+        options:
+          - auto
+          - manual
+        default: auto
+      topic:
+        description: "Required for manual mode"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nextpixel-auto-articles
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate and review article
+        id: article
+        env:
+          OPENAI_API_KEY: ${{ secrets.NextPixel }}
+          OPENAI_MODEL: gpt-4o-mini
+          ARTICLE_MODE: ${{ github.event_name == 'schedule' && 'auto' || inputs.mode || 'auto' }}
+          ARTICLE_TOPIC: ${{ inputs.topic }}
+        run: node generate-articles.js
+
+      - name: Rebuild sitemap
+        if: steps.article.outputs.article_status == 'approved'
+        run: python generate-sitemap.py technology-index.json --domain tech.nextpixel.site --output sitemap.xml
+
+      - name: Commit approved article
+        if: steps.article.outputs.article_status == 'approved'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add technology-index.json articles-technology.json sitemap.xml
+          git diff --cached --quiet || git commit -m "Publish reviewed NextPixel article"
+          git push
+
+      - name: Save rejected draft
+        if: steps.article.outputs.article_status == 'rejected'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add drafts/
+          git diff --cached --quiet || git commit -m "Save NextPixel article for human review"
+          git push
+
