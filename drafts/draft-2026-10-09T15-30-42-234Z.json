@@ -1,0 +1,7 @@
+{
+  "createdAt": "2026-10-09T15:30:42.234Z",
+  "status": "needs_human_review",
+  "reason": "自动任务异常：Unexpected token '﻿', \"﻿{\"article\"... is not valid JSON",
+  "topic": null,
+  "article": null
+}
