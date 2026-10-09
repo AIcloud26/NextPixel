@@ -1,0 +1,7 @@
+{
+  "createdAt": "2026-10-09T15:38:44.857Z",
+  "status": "needs_human_review",
+  "reason": "自动任务异常：OpenAI API HTTP 429: {\n    \"error\": {\n        \"message\": \"You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.\",\n        \"type\": \"insufficient_quota\",\n        \"param\": null,\n        \"code\": \"credit_balance_exhausted\"\n    }\n}\n",
+  "topic": null,
+  "article": null
+}
