@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -125,6 +125,28 @@
         'use strict';
 
         // Detect category from URL path
+        function preserveSubId(url) {
+            var params = new URLSearchParams(window.location.search);
+            var subId = (params.get('sub_id') || params.get('SUB_ID') || '').trim();
+
+            if (!subId || subId === '000' || !/^[A-Za-z0-9_-]{1,32}$/.test(subId)) {
+                return url;
+            }
+
+            var target = new URL(url, window.location.origin);
+            target.searchParams.set('sub_id', subId);
+            return target.pathname + target.search + target.hash;
+        }
+        function buildArticleUrl(id) {
+            var url = '/article.html?id=' + encodeURIComponent(id);
+            var params = new URLSearchParams(window.location.search);
+            var subId = (params.get('sub_id') || params.get('SUB_ID') || '').trim();
+
+            if (subId && subId !== '000' && /^[A-Za-z0-9_-]{1,32}$/.test(subId)) {
+                url += '&sub_id=' + encodeURIComponent(subId);
+            }
+            return url;
+        }
         function detectCategory() {
             var path = window.location.pathname.replace(/\/+$/, '');
             var segments = path.split('/').filter(Boolean);
@@ -212,7 +234,7 @@
             items.forEach(function(art) {
                 var imgUrl = art.image || SITE_CONFIG.fallbackImage;
                 html += '<article class="cat-card">' +
-                    '<a href="/article.html?id=' + encodeURIComponent(art.id) + '">' +
+                    '<a href="' + buildArticleUrl(art.id) + '">' +
                     '<img src="' + imgUrl + '" alt="' + esc(art.title) + '" loading="lazy" decoding="async" width="480" height="270">' +
                     '<div class="cat-card-body">' +
                     '<h2>' + esc(art.title) + '</h2>' +
@@ -256,7 +278,7 @@
             SITE_CONFIG.subcategories.forEach(function(sub) {
                 var isCurrent = sub.id === currentCatId;
                 var url = SITE_CONFIG.categoryUrlMap[sub.id] || '/' + sub.id + '/';
-                html += '<a class="topic-card' + (isCurrent ? ' current' : '') + '" href="' + url + '">' +
+                html += '<a class="topic-card' + (isCurrent ? ' current' : '') + '" href="' + preserveSubId(url) + '">' +
                     '<div class="topic-name">' + (isCurrent ? '&#10003; ' : '') + esc(sub.name) + '</div>' +
                     '<div class="topic-count">' + (counts[sub.id] || 0) + ' articles</div>' +
                     '</a>';
@@ -269,7 +291,7 @@
             var html = '';
             SITE_CONFIG.subcategories.forEach(function(sub) {
                 var url = SITE_CONFIG.categoryUrlMap[sub.id] || '/' + sub.id + '/';
-                html += '<li><a href="' + url + '">' + esc(sub.name) + '</a></li>';
+                html += '<li><a href="' + preserveSubId(url) + '">' + esc(sub.name) + '</a></li>';
             });
             ul.innerHTML = html;
         }
@@ -306,4 +328,3 @@
 </script>
 </body>
 </html>
-

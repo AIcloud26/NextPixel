@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -158,6 +158,16 @@
     (function() {
         'use strict';
         var params = new URLSearchParams(window.location.search);
+        function buildArticleUrl(id) {
+            var url = '/article.html?id=' + encodeURIComponent(id);
+            var params = new URLSearchParams(window.location.search);
+            var subId = (params.get('sub_id') || params.get('SUB_ID') || '').trim();
+
+            if (subId && subId !== '000' && /^[A-Za-z0-9_-]{1,32}$/.test(subId)) {
+                url += '&sub_id=' + encodeURIComponent(subId);
+            }
+            return url;
+        }
         var articleId = params.get('id');
         if (!articleId) { window.location.href = '/'; return; }
 
@@ -303,7 +313,7 @@
                 var imgUrl = r.image || SITE_CONFIG.fallbackImage;
                 imgUrl = imgUrl.replace(/w=\d+/, 'w=480').replace(/h=\d+/, 'h=270');
                 html += '<article class="related-card">' +
-                    '<a href="article.html?id=' + encodeURIComponent(r.id) + '">' +
+                    '<a href="' + buildArticleUrl(r.id) + '">' +
                     '<img src="' + imgUrl + '" alt="' + esc(r.title) + '" loading="lazy" decoding="async" width="480" height="270" onerror="this.onerror=null;this.src=SITE_CONFIG.fallbackImage;">' +
                     '<h3>' + esc(r.title) + '</h3>' +
                     '<time>' + fmtDate(r.date) + '</time>' +
@@ -343,7 +353,7 @@
                     return a.title.toLowerCase().indexOf(q) !== -1;
                 });
                 if (results.length > 0) {
-                    window.location.href = 'article.html?id=' + encodeURIComponent(results[0].id);
+                    window.location.href = buildArticleUrl(results[0].id);
                 } else {
                     input.value = '';
                     input.placeholder = 'No results found';
@@ -616,4 +626,3 @@
 </script>
 </body>
 </html>
-

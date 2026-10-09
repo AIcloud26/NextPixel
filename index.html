@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -204,6 +204,35 @@
         }
         document.documentElement.classList.add('category-ready');
 
+        function buildCategoryUrl(catId) {
+            var url = 'index.html?cat=' + encodeURIComponent(catId);
+            var params = new URLSearchParams(window.location.search);
+            var subId = (params.get('sub_id') || params.get('SUB_ID') || '').trim();
+            if (subId && subId !== '000' && /^[A-Za-z0-9_-]{1,32}$/.test(subId)) {
+                url += '&sub_id=' + encodeURIComponent(subId);
+            }
+            return url;
+        }
+
+        document.querySelectorAll('#mainNav a[href*="index.html?cat="]').forEach(function(link) {
+            link.addEventListener('click', function(event) {
+                var match = link.getAttribute('href').match(/[?&]cat=([^&]+)/);
+                if (match) {
+                    event.preventDefault();
+                    window.location.href = buildCategoryUrl(decodeURIComponent(match[1]));
+                }
+            });
+        });
+        function buildArticleUrl(id) {
+            var url = '/article.html?id=' + encodeURIComponent(id);
+            var params = new URLSearchParams(window.location.search);
+            var subId = (params.get('sub_id') || params.get('SUB_ID') || '').trim();
+
+            if (subId && subId !== '000' && /^[A-Za-z0-9_-]{1,32}$/.test(subId)) {
+                url += '&sub_id=' + encodeURIComponent(subId);
+            }
+            return url;
+        }
         function markUsed(id) { usedIds[id] = true; }
         function isUsed(id) { return !!usedIds[id]; }
 
@@ -288,7 +317,7 @@
                 imgUrl = imgUrl.replace(/w=\d+/, 'w=800').replace(/h=\d+/, 'h=450');
                 var cls = i === 0 ? 'featured-main' : 'featured-side';
                 html += '<article class="featured-card ' + cls + '">' +
-                    '<a href="article.html?id=' + encodeURIComponent(art.id) + '">' +
+                    '<a href="' + buildArticleUrl(art.id) + '">' +
                     '<img src="' + imgUrl + '" alt="' + esc(art.title) + '" loading="lazy" decoding="async" width="640" height="360" onerror="this.onerror=null;this.src=SITE_CONFIG.fallbackImage;">' +
                     '<span class="featured-cat">' + esc(art.category) + '</span>' +
                     '<h3>' + esc(art.title) + '</h3>' +
@@ -313,12 +342,12 @@
                 var imgUrl = art.image || SITE_CONFIG.fallbackImage;
                 imgUrl = imgUrl.replace(/w=\d+/, 'w=400').replace(/h=\d+/, 'h=225');
                 html += '<article class="latest-card">' +
-                    '<a href="article.html?id=' + encodeURIComponent(art.id) + '" class="latest-img">' +
+                    '<a href="' + buildArticleUrl(art.id) + '" class="latest-img">' +
                     '<img src="' + imgUrl + '" alt="' + esc(art.title) + '" loading="lazy" decoding="async" width="400" height="225" onerror="this.onerror=null;this.src=SITE_CONFIG.fallbackImage;">' +
                     '</a>' +
                     '<div class="latest-card-body">' +
                     '<span class="latest-cat">' + esc(art.category) + '</span>' +
-                    '<h3><a href="article.html?id=' + encodeURIComponent(art.id) + '">' + esc(art.title) + '</a></h3>' +
+                    '<h3><a href="' + buildArticleUrl(art.id) + '">' + esc(art.title) + '</a></h3>' +
                     '<p>' + esc(art.excerpt || '') + '</p>' +
                     '<time>' + fmtDate(art.date) + '</time>' +
                     '</div></article>';
@@ -341,7 +370,7 @@
             SITE_CONFIG.subcategories.forEach(function(sub) {
                 var arts = allArticles.filter(function(a) { return a.subcategory === sub.id; }).slice(0, 3);
                 if (arts.length === 0) return;
-                var url = 'index.html?cat=' + sub.id;
+                var url = buildCategoryUrl(sub.id);
                 html += '<section class="topic-section"><div class="container">' +
                     '<div class="topic-header"><h2>' + esc(sub.name) + '</h2><a href="' + url + '" class="view-all">View all &rarr;</a></div>' +
                     '<div class="topic-grid">';
@@ -349,7 +378,7 @@
                     var imgUrl = art.image || SITE_CONFIG.fallbackImage;
                     imgUrl = imgUrl.replace(/w=\d+/, 'w=480').replace(/h=\d+/, 'h=270');
                     html += '<article class="topic-card">' +
-                        '<a href="article.html?id=' + encodeURIComponent(art.id) + '">' +
+                        '<a href="' + buildArticleUrl(art.id) + '">' +
                         '<img src="' + imgUrl + '" alt="' + esc(art.title) + '" loading="lazy" decoding="async" width="480" height="270" onerror="this.onerror=null;this.src=SITE_CONFIG.fallbackImage;">' +
                         '<h3>' + esc(art.title) + '</h3>' +
                         '<time>' + fmtDate(art.date) + '</time>' +
@@ -365,7 +394,7 @@
             var items = filteredArticles.slice(0, 5);
             var html = '';
             items.forEach(function(art, i) {
-                html += '<li><a href="article.html?id=' + encodeURIComponent(art.id) + '">' +
+                html += '<li><a href="' + buildArticleUrl(art.id) + '">' +
                     '<span class="mr-text">' + esc(art.title) + '</span>' +
                     '</a></li>';
             });
@@ -376,7 +405,7 @@
             var ul = document.getElementById('footerTopics');
             var html = '';
             SITE_CONFIG.subcategories.forEach(function(sub) {
-                var url = 'index.html?cat=' + sub.id;
+                var url = buildCategoryUrl(sub.id);
                 html += '<li><a href="' + url + '">' + esc(sub.name) + '</a></li>';
             });
             ul.innerHTML = html;
@@ -393,7 +422,7 @@
                            (a.excerpt && a.excerpt.toLowerCase().indexOf(q) !== -1);
                 });
                 if (results.length > 0) {
-                    window.location.href = 'article.html?id=' + encodeURIComponent(results[0].id);
+                    window.location.href = buildArticleUrl(results[0].id);
                 } else {
                     input.placeholder = 'No results for "' + input.value + '"';
                     input.value = '';
@@ -433,4 +462,3 @@
 </script>
 </body>
 </html>
-
