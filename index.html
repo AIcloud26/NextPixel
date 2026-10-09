@@ -240,9 +240,14 @@
 
         function renderEditorial() {
             var el = document.getElementById('editorialText');
-            if (typeof SITE_CONFIG !== 'undefined') {
-                el.innerHTML = SITE_CONFIG.heroIntro;
+            if (!el || typeof SITE_CONFIG === 'undefined') return;
+
+            var intro = SITE_CONFIG.heroIntro;
+            if (currentCat && SITE_CONFIG.categoryEditorial &&
+                SITE_CONFIG.categoryEditorial[currentCat]) {
+                intro = SITE_CONFIG.categoryEditorial[currentCat];
             }
+            el.innerHTML = intro;
         }
 
         function renderFeatured() {

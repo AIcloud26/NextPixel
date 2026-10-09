@@ -35,6 +35,16 @@ var SITE_CONFIG = {
     /* === Hero / Editorial === */
     heroIntro: '<p>NextPixel covers the technologies reshaping how we work, build, and live &mdash; with reporting that cuts through vendor hype.</p><p>Our editors track artificial intelligence, software, cybersecurity, hardware, and the infrastructure behind modern computing. We focus on what changes, what it costs, and who it actually affects.</p>',
 
+    /* === Category-specific Editorial Introductions === */
+    categoryEditorial: {
+        'ai': '<p>We examine how artificial intelligence is moving from research into practical tools and business systems. Our coverage explores model capabilities, real-world applications, costs, limitations, and the implications for people and organizations adopting AI.</p>',
+        'software': '<p>We cover the software and developer tools shaping how digital products are built and maintained. Our articles examine practical capabilities, usability, integration, pricing, and the trade-offs teams should consider when choosing their tools.</p>',
+        'cybersecurity': '<p>We explain the security threats, defensive technologies, and policy changes affecting modern digital systems. Our coverage focuses on practical risks, protective measures, implementation challenges, and the security decisions facing individuals and organizations.</p>',
+        'gadgets': '<p>We explore consumer technology through the devices people use every day, from phones and wearables to smart home products. Our coverage considers useful features, performance, battery life, compatibility, price, and the trade-offs that matter before buying.</p>',
+        'developer': '<p>We examine the tools and infrastructure developers rely on to build, deploy, and maintain software. Our coverage looks at development workflows, platforms, performance, reliability, costs, and the practical choices facing engineering teams.</p>',
+        'future-tech': '<p>We follow emerging technologies such as quantum computing, robotics, and new computing architectures, separating demonstrated progress from early research and forecasts. Our coverage explains what is changing, what remains uncertain, and where practical applications may emerge.</p>'
+    },
+
     /* === Subcategories === */
     subcategories: [
         { id: 'ai', name: 'Artificial Intelligence', desc: 'AI models, products, enterprise adoption, safety and the business of intelligent systems.' },
