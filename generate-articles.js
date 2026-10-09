@@ -22,7 +22,7 @@ const CATEGORIES = [
 ];
 
 function readJson(file) {
-  return JSON.parse(fs.readFileSync(file, "utf8"));
+  return JSON.parse(fs.readFileSync(file, "utf8").replace(/^\uFEFF/, ""));
 }
 
 function saveJson(file, data) {
@@ -351,3 +351,4 @@ main().catch(error => {
     writeOutput("article_status", "rejected");
   }
 });
+
